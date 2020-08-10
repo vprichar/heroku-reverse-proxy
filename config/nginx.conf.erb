@@ -25,14 +25,12 @@ http {
 			proxy_buffering off;
 		}
 
-
 		location /ruletaApi {
 			proxy_pass <%= ENV["RULETA"] %>;
 			proxy_http_version 1.1;
 			proxy_buffering off;
 			proxy_set_header Upgrade $http_upgrade;
 			proxy_set_header Connection "upgrade";
-			proxy_set_header Host $host;
 		}
 
 		# This forces HTTPS but we don't want that, we'll stay on port 80 http
