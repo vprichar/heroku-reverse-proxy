@@ -17,7 +17,7 @@ http {
 	server_tokens off;
 
 	server {
-		listen ${{PORT}};
+		listen ${{PORT}}
 		location / {
 			proxy_pass <%= ENV["UPSTREAM_SERVER"] %>;
 			proxy_http_version 1.1;
@@ -27,6 +27,7 @@ http {
 		location /ruletaApi {
 			proxy_pass <%= ENV["RULETA"] %>;
 			proxy_http_version 1.1;
+			proxy_buffering off;
 			proxy_set_header Upgrade $http_upgrade;
 			proxy_set_header Connection "Upgrade";
 			proxy_set_header Host $host;
